@@ -9,36 +9,16 @@ class Calculator(QWidget):
         self.hbox_first = QHBoxLayout()
         self.hbox_second = QHBoxLayout()
         self.hbox_third = QHBoxLayout()
-        self.hbox_fourth = QHBoxLayout()
         self.hbox_result = QHBoxLayout()
 
         self.vbox.addLayout(self.hbox_input)
         self.vbox.addLayout(self.hbox_first)
         self.vbox.addLayout(self.hbox_second)
         self.vbox.addLayout(self.hbox_third)
-        self.vbox.addLayout(self.hbox_fourth)
         self.vbox.addLayout(self.hbox_result)
 
         self.input = QLineEdit(self)
         self.hbox_input.addWidget(self.input)
-
-        self.b_1 = QPushButton("1", self)
-        self.hbox_first.addWidget(self.b_1)
-
-        self.b_2 = QPushButton("2", self)
-        self.hbox_first.addWidget(self.b_2)
-
-        self.b_3 = QPushButton("3", self)
-        self.hbox_first.addWidget(self.b_3)
-
-        self.b_4 = QPushButton("4", self) # b_4 и дальше исравить b_.. + переставить цифры местами как на обычном кальуляторе(first 7 8 9\second 4 5 6\third 1 2 3)
-        self.hbox_second.addWidget(self.b_4) #hbox_second и дальше исправить строки
-
-        self.b_5 = QPushButton("5", self)
-        self.hbox_second.addWidget(self.b_5)
-
-        self.b_6 = QPushButton("6", self)
-        self.hbox_second.addWidget(self.b_6)
 
         self.b_7 = QPushButton("7", self)
         self.hbox_first.addWidget(self.b_7)
@@ -49,17 +29,35 @@ class Calculator(QWidget):
         self.b_9 = QPushButton("9", self)
         self.hbox_first.addWidget(self.b_9)
 
-        self.b_0 = QPushButton("0", self)
-        self.hbox_fourth.addWidget(self.b_0)
-
         self.b_plus = QPushButton("+", self)
         self.hbox_first.addWidget(self.b_plus)
 
+        self.b_4 = QPushButton("4", self)
+        self.hbox_second.addWidget(self.b_4)
+
+        self.b_5 = QPushButton("5", self)
+        self.hbox_second.addWidget(self.b_5)
+
+        self.b_6 = QPushButton("6", self)
+        self.hbox_second.addWidget(self.b_6)
+
         self.b_minus = QPushButton("-", self)
-        self.hbox_first.addWidget(self.b_minus)
+        self.hbox_second.addWidget(self.b_minus)
+
+        self.b_1 = QPushButton("1", self)
+        self.hbox_third.addWidget(self.b_1)
+
+        self.b_2 = QPushButton("2", self)
+        self.hbox_third.addWidget(self.b_2)
+
+        self.b_3 = QPushButton("3", self)
+        self.hbox_third.addWidget(self.b_3)
 
         self.b_multiply = QPushButton("*", self)
-        self.hbox_first.addWidget(self.b_multiply)
+        self.hbox_third.addWidget(self.b_multiply)
+
+        self.b_0 = QPushButton("0", self)
+        self.hbox_result.addWidget(self.b_0)
 
         self.b_result = QPushButton("=", self)
         self.hbox_result.addWidget(self.b_result)
@@ -94,9 +92,9 @@ class Calculator(QWidget):
         if self.op == "+":
             self.input.setText(str(self.num_1 + self.num_2))
         if self.op == "-":
-            self.input.setText(str(self.num_1 + self.num_2))
+            self.input.setText(str(self.num_1 - self.num_2))
         if self.op == "*":
-            self.input.setText(str(self.num_1 + self.num_2))
+            self.input.setText(str(self.num_1 * self.num_2))
 
 app = QApplication(sys.argv)
 win = Calculator()
